@@ -1,0 +1,10 @@
+table,tr,th{
+    border: 2px white solid;
+    padding: 10px;
+    align-items: center;
+    margin-left: 200px;
+    width: 200px;
+    width: auto;
+    text-align: center;
+   
+}

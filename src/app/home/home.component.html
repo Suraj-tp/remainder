@@ -1,0 +1,134 @@
+<nav class="navbar bg-dark">
+    <form class="container ">
+        <button class="btn btn-outline-warning btn-lg" type="button">Welcome {{user}}</button>
+        <h4 style="color: white;">{{aim}}</h4><br>
+        <button class="btn btn-outline-success btn-lg" routerLink="/eventhistory" >Event History</button>
+        <button class="btn btn-outline-warning btn-lg" type="button" (click)="logout()" >Log out</button>
+    </form>
+</nav><br>
+<!-- <h3 style="color: white;">Welcome {{user}}</h3> -->
+<h6 style="color: white;">{{ldate|date:'short'}}</h6>
+<!-- Add Event -->
+
+<div class="container col-md-12 mt-0">
+    <div class="d-flex justify-content-end h-100">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Add Event</h3>
+            </div>
+
+            <div class="card-body">
+                <form [formGroup]="addEvent" (ngSubmit)="eventadd()">
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="userid" formControlName="uid"
+                            placeholder="User Id" id="event_userid" required>
+                    </div>
+
+                    <!-- structural directive -->
+					<div *ngIf="this.addEvent.get('uid')?.touched&&this.addEvent.get('uid')?.errors"
+                    style="color: red;">Invalid User Id</div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="pswd" formControlName="pswd"
+                            placeholder="Password" id="event_password" required>
+                    </div>
+
+                    <!-- structural directive -->
+					<div *ngIf="this.addEvent.get('pswd')?.touched&&this.addEvent.get('pswd')?.errors"
+                    style="color: red;">Invalid Password</div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="addevent" formControlName="addevent"
+                            placeholder="Add Event" id="add_event" required>
+                    </div>
+
+                    <!-- structural directive -->
+					<div *ngIf="this.addEvent.get('addevent')?.touched&&this.addEvent.get('addevent')?.errors"
+                    style="color: red;">Invalid Event</div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-primary btn-lg float-right">Add Event</button>
+
+                        <!-- <input type="submit" value="Add Event"  class="btn btn-outline-primary btn-lg float-right  " style="width:50%" > -->
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- <p style="color:white;align-items:baseline;">Not a user? <a routerLink="register" >Register</a></p> -->
+        </div>
+    </div>
+</div><br>
+
+
+<!-- Delete Event -->
+
+<div class="container col-md-12 mt-0">
+    <div class="d-flex justify-content-end h-100">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Delete Event</h3>
+            </div>
+
+            <div class="card-body">
+                <form [formGroup]="deleteEvent" (ngSubmit)="eventdelete()">
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="userid" formControlName="uid1"
+                            placeholder="User Id" id="event_userid1" required>
+                    </div>
+
+                    <!-- structural directive -->
+					<div *ngIf="this.deleteEvent.get('uid1')?.touched&&this.deleteEvent.get('uid1')?.errors"
+                    style="color: red;">Invalid User Id</div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="pswd" formControlName="pswd1"
+                            placeholder="Password" id="login_password1" required>
+                    </div>
+
+                    <!-- structural directive -->
+					<div *ngIf="this.deleteEvent.get('pswd1')?.touched&&this.deleteEvent.get('pswd1')?.errors"
+                    style="color: red;">Invalid Password</div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="deleteevent" formControlName="deleteevent"
+                            placeholder="Delete Event" id="delete_event" required>
+                    </div>
+
+                    <!-- structural directive -->
+					<div *ngIf="this.deleteEvent.get('deleteevent')?.touched&&this.deleteEvent.get('deleteevent')?.errors"
+                    style="color: red;">Invalid Event</div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-primary btn-lg float-right">Delete Event</button>
+
+                        <!-- <input type="submit" value="Delete Event" class="btn btn-outline-primary btn-lg float-right " style="width:50%" > -->
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- <p style="color:white;align-items:baseline;">Not a user? <a routerLink="register" >Register</a></p> -->
+        </div>
+    </div>
+</div>
